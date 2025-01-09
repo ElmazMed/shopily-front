@@ -10,8 +10,9 @@ import ListItemText from "@mui/material/ListItemText";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import MaleIcon from "@mui/icons-material/Male";
 import FemaleIcon from "@mui/icons-material/Female";
-import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
+import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
+import Banner from "./banner";
 
 export default function NavBar() {
   const [open, setOpen] = React.useState(false);
@@ -37,24 +38,23 @@ export default function NavBar() {
 
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
-      <List>
-        <List>
-          {navList.map((item, index) => (
-            <ListItem key={index} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.name} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+      <List className="mt-16">
+        {navList.map((item, index) => (
+          <ListItem key={index} disablePadding className="mt-4">
+            <ListItemButton>
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.name} />
+            </ListItemButton>
+          </ListItem>
+        ))}
       </List>
     </Box>
   );
 
   return (
     <>
-      <nav className="w-full flex justify-between p-8 bg-white shadow-sm">
+      <Banner />
+      <nav className="w-full flex justify-between p-7 bg-white shadow-sm">
         <div>
           <button onClick={toggleDrawer(true)}>
             <MenuIcon />
@@ -64,11 +64,11 @@ export default function NavBar() {
           </Drawer>
         </div>
         <div>
-          <span className="logo">Shopily</span>
+          <span className="logo font-bold text-2xl">Shopily</span>
         </div>
         <div>
           <button>
-            <ShoppingBagIcon />
+            <LocalMallOutlinedIcon className="text-3xl" />
           </button>
         </div>
       </nav>
