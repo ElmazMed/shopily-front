@@ -1,5 +1,6 @@
 "use client";
-import React from "react";
+
+import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -12,9 +13,8 @@ import MaleIcon from "@mui/icons-material/Male";
 import FemaleIcon from "@mui/icons-material/Female";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
-import Banner from "./banner";
 
-export default function NavBar() {
+export default function NavMenu() {
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
@@ -35,7 +35,6 @@ export default function NavBar() {
       icon: <FemaleIcon />,
     },
   ];
-
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
       <List className="mt-16">
@@ -50,28 +49,24 @@ export default function NavBar() {
       </List>
     </Box>
   );
-
   return (
-    <>
-      <Banner />
-      <nav className="w-full flex justify-between p-7 bg-white shadow-sm">
-        <div>
-          <button onClick={toggleDrawer(true)}>
-            <MenuIcon />
-          </button>
-          <Drawer open={open} onClose={toggleDrawer(false)}>
-            {DrawerList}
-          </Drawer>
-        </div>
-        <div>
-          <span className="logo font-bold text-2xl">Shopily</span>
-        </div>
-        <div>
-          <button>
-            <LocalMallOutlinedIcon className="text-3xl" />
-          </button>
-        </div>
-      </nav>
-    </>
+    <nav className="w-full flex justify-between p-7 bg-white shadow-sm">
+      <div>
+        <button onClick={toggleDrawer(true)}>
+          <MenuIcon />
+        </button>
+        <Drawer open={open} onClose={toggleDrawer(false)}>
+          {DrawerList}
+        </Drawer>
+      </div>
+      <div>
+        <span className="logo font-bold text-2xl">Shopily</span>
+      </div>
+      <div>
+        <button>
+          <LocalMallOutlinedIcon className="text-3xl" />
+        </button>
+      </div>
+    </nav>
   );
 }
